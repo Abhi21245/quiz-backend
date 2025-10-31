@@ -11,7 +11,7 @@ import Leaderboard from "../models/leaderboard.model.js";
 
 // const DISCORD_CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 // const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
-const REDIRECT_URI = `http://localhost:3000/api/v1/users/auth/discord/callback`;
+const REDIRECT_URI = `https://quiz-backend-zyav.onrender.com/api/v1/users/auth/discord/callback`;
 
 // console.log("i am outside of the functions  ",process.env.DISCORD_CLIENT_ID,process.env.DISCORD_CLIENT_SECRET)
 const handlediscordAuth = async (req, res) => {
@@ -560,6 +560,7 @@ export {
   handleUpdateScore,
   handleLeaderboardData,
 };
+
 
 
 
