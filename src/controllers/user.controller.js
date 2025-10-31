@@ -148,10 +148,14 @@ const handleCallBackFromDiscord = async (req, res) => {
           .cookie("accessToken", access_Token, {
             maxAge: 864000000,
             httpOnly: true,
+            secure:true,
+            sameSite:"none"
           })
           .cookie("refreshToken", refresh_Token, {
             maxAge: 2592000000,
             httpOnly: true,
+            secure:true,
+            sameSite:"none"
           })
           .redirect("https://gensyn-quiz-tool.netlify.app/leaderboard");
       } else {
@@ -560,6 +564,7 @@ export {
   handleUpdateScore,
   handleLeaderboardData,
 };
+
 
 
 
