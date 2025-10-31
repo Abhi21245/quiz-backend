@@ -5,7 +5,7 @@ export const verifyJwt = async (req, res, next) => {
   try {
     const { accessToken } = req.cookies;
 
-    //  console.log("THis is obj", req.cookies);
+     console.log("THis is obj", req.cookies);
     //  console.log("THis is accesstken", accessToken);
 
     if (!accessToken) {
@@ -32,3 +32,4 @@ export const verifyJwt = async (req, res, next) => {
     console.error("There was an errror while verifying jwt ", error);
   }
 };
+
