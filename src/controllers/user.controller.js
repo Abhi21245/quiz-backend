@@ -100,11 +100,13 @@ const handleCallBackFromDiscord = async (req, res) => {
     res
       .cookie("accessToken", access_Token, {
         maxAge: 864000000,
+        secure: true,
         httpOnly: true,
         sameSite: "none",
       })
       .cookie("refreshToken", refresh_Token, {
         maxAge: 2592000000,
+        secure: true,
         httpOnly: true,
         sameSite: "none",
       })
@@ -558,3 +560,4 @@ export {
   handleUpdateScore,
   handleLeaderboardData,
 };
+
