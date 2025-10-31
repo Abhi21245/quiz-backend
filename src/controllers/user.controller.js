@@ -153,7 +153,7 @@ const handleCallBackFromDiscord = async (req, res) => {
             maxAge: 2592000000,
             httpOnly: true,
           })
-          .redirect("http://localhost:5173/leaderboard");
+          .redirect("https://gensyn-quiz-tool.netlify.app/leaderboard");
       } else {
         // Should not happen if error handling is correct, but as a fallback
         res.status(500).send("User object not available after auth attempt.");
@@ -560,6 +560,7 @@ export {
   handleUpdateScore,
   handleLeaderboardData,
 };
+
 
 
 
