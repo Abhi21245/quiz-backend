@@ -15,7 +15,7 @@ const REDIRECT_URI = `http://localhost:3000/api/v1/users/auth/discord/callback`;
 
 // console.log("i am outside of the functions  ",process.env.DISCORD_CLIENT_ID,process.env.DISCORD_CLIENT_SECRET)
 const handlediscordAuth = async (req, res) => {
-  console.log("i am runned ",process.env.DISCORD_CLIENT_ID,process.env.DISCORD_CLIENT_SECRET)
+  // console.log("i am runned ",process.env.DISCORD_CLIENT_ID,process.env.DISCORD_CLIENT_SECRET)
 
   const url = `https://discord.com/api/oauth2/authorize?client_id=${
     process.env.DISCORD_CLIENT_ID
@@ -560,5 +560,6 @@ export {
   handleUpdateScore,
   handleLeaderboardData,
 };
+
 
 
