@@ -10,7 +10,7 @@ import userRoutes from "./routes/userRoutes.js";
 
 const app = express();
 app.use(cors({
-    origin:"http://localhost:5173",
+    origin:"https://gensyn-quiz-tool.netlify.app",
     credentials:true
 }));
 app.use(cookieParser())
@@ -20,3 +20,4 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1/users", userRoutes);
 
 export default app;
+
