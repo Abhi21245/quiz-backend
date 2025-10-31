@@ -110,7 +110,7 @@ const handleCallBackFromDiscord = async (req, res) => {
         httpOnly: true,
         sameSite: "none",
       })
-      .redirect("http://localhost:5173/leaderboard");
+      .redirect("https://gensyn-quiz-tool.netlify.app/leaderboard");
   } catch (error) {
     // console.error("Error during Discord auth:", error);
     if (error.code === 11000) {
@@ -560,6 +560,7 @@ export {
   handleUpdateScore,
   handleLeaderboardData,
 };
+
 
 
 
