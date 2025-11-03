@@ -9,7 +9,7 @@ import Leaderboard from "../models/leaderboard.model.js";
 import { set } from "mongoose";
 
 // console.log(`[Controller File] Module Execution: ${process.env.DISCORD_CLIENT_ID}`);
-
+const oneYearInMs = 365 * 24 * 60 * 60 * 1000;
 // const DISCORD_CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 // const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
 const REDIRECT_URI = `http://localhost:3000/api/v1/users/auth/discord/callback`;
@@ -120,16 +120,18 @@ const handleCallBackFromDiscord = async (req, res) => {
 
         return res
           .cookie("accessToken", newAccess_TokenForMigratedUser, {
-            maxAge: oneYear,
+            maxAge: oneYearInMs,
             httpOnly: true,
             sameSite: "none",
-            secure:true
+            secure:true,
+            path: "/"
           })
           .cookie("refreshToken", newRefresh_TokenForMigratedUser, {
-            maxAge: oneYear,
+            maxAge: oneYearInMs,
             httpOnly: true,
             sameSite: "none",
-            secure:true
+            secure:true,
+            path: "/"
           })
           .redirect("http://localhost:5173/leaderboard");
         // .json({message:"Migration successfull"})
@@ -173,16 +175,18 @@ const handleCallBackFromDiscord = async (req, res) => {
 
     res
       .cookie("accessToken", access_Token, {
-        maxAge: oneYear,
+        maxAge: oneYearInMs,
             httpOnly: true,
             sameSite: "none",
-            secure:true
+            secure:true,
+            path: "/"
       })
       .cookie("refreshToken", refresh_Token, {
-        maxAge: oneYear,
+        maxAge: oneYearInMs,
             httpOnly: true,
             sameSite: "none",
-            secure:true
+            secure:true,
+            path: "/"
       })
       .redirect("http://localhost:5173/leaderboard");
   } catch (error) {
@@ -219,16 +223,18 @@ const handleCallBackFromDiscord = async (req, res) => {
 
         res
           .cookie("accessToken", access_Token, {
-           maxAge: oneYear,
+           maxAge: oneYearInMs,
             httpOnly: true,
             sameSite: "none",
-            secure:true
+            secure:true,
+            path: "/"
           })
           .cookie("refreshToken", refresh_Token, {
-            maxAge: oneYear,
+            maxAge: oneYearInMs,
             httpOnly: true,
             sameSite: "none",
-            secure:true
+            secure:true,
+            path: "/"
           })
           .redirect("http://localhost:5173/leaderboard");
       } else {
@@ -687,16 +693,19 @@ const handleGuestLogin = async (req, res) => {
 
     return res
       .cookie("accessToken", access_Token, {
-        maxAge: oneYear,
+        maxAge: oneYearInMs,
             httpOnly: true,
             sameSite: "none",
-            secure:true
+            secure:true,
+            path: "/"
+        
       })
       .cookie("refreshToken", refresh_Token, {
-       maxAge: oneYear,
+       maxAge: oneYearInMs,
             httpOnly: true,
             sameSite: "none",
-            secure:true
+            secure:true,
+        path: "/"
       })
       .json({
         message: "Guest user created succssfully",
@@ -722,4 +731,5 @@ export {
   handleLeaderboardData,
   handleGuestLogin,
 };
+
 
