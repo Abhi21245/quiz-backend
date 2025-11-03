@@ -292,7 +292,7 @@ const handleEasyQuestion = async (req, res) => {
   const questionToSend = [];
   // console.log(easyQuestionBank?.length);
 
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < 10; i++) {
     // const element = array[i];
     const randomIndex = Math.floor(Math.random() * 50);
     // console.log("This is random index", randomIndex);
@@ -472,9 +472,9 @@ const handleHardAnswerCheck = async (req, res) => {
 // };
 
 const handleUpdateScore = async (req, res) => {
-  const { level, totalTimeLeft } = req.body;
-  // const { level, score, totalTimeLeft } = req.body;
-  const score = 9;
+  // const { level, totalTimeLeft } = req.body;
+  const { level, score, totalTimeLeft } = req.body;
+  
   // const totalTimeLeft = 100;
 
   // console.log("Received update request ", req.body);
@@ -732,6 +732,7 @@ export {
   handleLeaderboardData,
   handleGuestLogin,
 };
+
 
 
 
