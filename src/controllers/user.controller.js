@@ -12,7 +12,8 @@ import { set } from "mongoose";
 const oneYearInMs = 365 * 24 * 60 * 60 * 1000;
 // const DISCORD_CLIENT_ID = process.env.DISCORD_CLIENT_ID;
 // const DISCORD_CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
-const REDIRECT_URI = `http://localhost:3000/api/v1/users/auth/discord/callback`;
+const REDIRECT_URI = `https://quiz-backend-zyav.onrender.com/api/v1/users/auth/discord/callback`;
+// const REDIRECT_URI = `http://localhost:3000/api/v1/users/auth/discord/callback`;
 
 // console.log("i am outside of the functions  ",process.env.DISCORD_CLIENT_ID,process.env.DISCORD_CLIENT_SECRET)
 const handlediscordAuth = async (req, res) => {
@@ -133,7 +134,7 @@ const handleCallBackFromDiscord = async (req, res) => {
             secure:true,
             path: "/"
           })
-          .redirect("http://localhost:5173/leaderboard");
+          .redirect("http://:5173/leaderboard");
         // .json({message:"Migration successfull"})
       } catch (error) {
         console.error(error.message);
@@ -188,7 +189,7 @@ const handleCallBackFromDiscord = async (req, res) => {
             secure:true,
             path: "/"
       })
-      .redirect("http://localhost:5173/leaderboard");
+      .redirect("https://quiz-backend-zyav.onrender.com/leaderboard");
   } catch (error) {
     if (error.code === 11000) {
       console.log("duplicate key errror likey user exist");
@@ -236,7 +237,7 @@ const handleCallBackFromDiscord = async (req, res) => {
             secure:true,
             path: "/"
           })
-          .redirect("http://localhost:5173/leaderboard");
+          .redirect("https://quiz-backend-zyav.onrender.com/leaderboard");
       } else {
         // Should not happen if error handling is correct, but as a fallback
         res.status(500).send("User object not available after auth attempt.");
@@ -731,5 +732,6 @@ export {
   handleLeaderboardData,
   handleGuestLogin,
 };
+
 
 
