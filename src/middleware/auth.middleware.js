@@ -30,12 +30,12 @@ export const verifyJwt = async (req, res, next) => {
     next();
   } catch (error) {
 
-    console.log("thos os errpr ",error.name)
+    // console.log("thos os errpr ",error.name)
 
     if (error.name === "TokenExpiredError") {
       const refreshToken = req.cookies.refreshToken;
 
-      console.log("i entered in if statement ")
+      // console.log("i entered in if statement ")
 
       if (!refreshToken) {
         return res.status(404).json({ message: "RefreshToken required" });
@@ -46,19 +46,19 @@ export const verifyJwt = async (req, res, next) => {
           process.env.REFRESH_TOKEN_SECRET
         );
 
-        console.log("THis is decode ",decode)
+        // console.log("THis is decode ",decode)
 
-        console.log("THis is old refresh token ",refreshToken)
+        // console.log("THis is old refresh token ",refreshToken)
         
         const user = await User.findById(decode._id);
         
-        console.log("User refresh token  ",user.refresh_Token)
+        // console.log("User refresh token  ",user.refresh_Token)
 
         if (!user) {
           return res.status(404).json({ message: "User not Found" });
         }
         
-        console.log("Are the token are matched",user.refresh_Token === refreshToken)
+        // console.log("Are the token are matched",user.refresh_Token === refreshToken)
 
         if (user.refresh_Token !== refreshToken) {
           return res.status(401).json({ message: "Token are not matched" });
@@ -78,7 +78,7 @@ export const verifyJwt = async (req, res, next) => {
 
         user.refresh_Token = newRefresh_Token;
 
-        console.log("This is new refresh token ",newRefresh_Token)
+        // console.log("This is new refresh token ",newRefresh_Token)
 
         await user.save();
 
@@ -106,3 +106,4 @@ export const verifyJwt = async (req, res, next) => {
     console.error("There was an errror while verifying jwt ", error);
   }
 };
+
