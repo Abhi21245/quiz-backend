@@ -120,14 +120,16 @@ const handleCallBackFromDiscord = async (req, res) => {
 
         return res
           .cookie("accessToken", newAccess_TokenForMigratedUser, {
-            maxAge: 864000000,
+            maxAge: oneYear,
             httpOnly: true,
             sameSite: "none",
+            secure:true
           })
           .cookie("refreshToken", newRefresh_TokenForMigratedUser, {
-            maxAge: 2592000000,
+            maxAge: oneYear,
             httpOnly: true,
             sameSite: "none",
+            secure:true
           })
           .redirect("http://localhost:5173/leaderboard");
         // .json({message:"Migration successfull"})
@@ -171,14 +173,16 @@ const handleCallBackFromDiscord = async (req, res) => {
 
     res
       .cookie("accessToken", access_Token, {
-        maxAge: 864000000,
-        httpOnly: true,
-        sameSite: "none",
+        maxAge: oneYear,
+            httpOnly: true,
+            sameSite: "none",
+            secure:true
       })
       .cookie("refreshToken", refresh_Token, {
-        maxAge: 2592000000,
-        httpOnly: true,
-        sameSite: "none",
+        maxAge: oneYear,
+            httpOnly: true,
+            sameSite: "none",
+            secure:true
       })
       .redirect("http://localhost:5173/leaderboard");
   } catch (error) {
@@ -215,12 +219,16 @@ const handleCallBackFromDiscord = async (req, res) => {
 
         res
           .cookie("accessToken", access_Token, {
-            maxAge: 864000000,
+           maxAge: oneYear,
             httpOnly: true,
+            sameSite: "none",
+            secure:true
           })
           .cookie("refreshToken", refresh_Token, {
-            maxAge: 2592000000,
+            maxAge: oneYear,
             httpOnly: true,
+            sameSite: "none",
+            secure:true
           })
           .redirect("http://localhost:5173/leaderboard");
       } else {
@@ -679,14 +687,16 @@ const handleGuestLogin = async (req, res) => {
 
     return res
       .cookie("accessToken", access_Token, {
-        httpOnly: true,
-        secure: false,
-        path: "/",
+        maxAge: oneYear,
+            httpOnly: true,
+            sameSite: "none",
+            secure:true
       })
       .cookie("refreshToken", refresh_Token, {
-        httpOnly: true,
-        secure: false,
-        path: "/",
+       maxAge: oneYear,
+            httpOnly: true,
+            sameSite: "none",
+            secure:true
       })
       .json({
         message: "Guest user created succssfully",
@@ -712,3 +722,4 @@ export {
   handleLeaderboardData,
   handleGuestLogin,
 };
+
